@@ -1,0 +1,93 @@
+batch_size: 10
+class_num: 2
+cuda_visible_device: '0'
+data: adhd
+data_param:
+  train_data_param:
+    center_choose: false
+    data_path: /ADHD_Data/train_data.npy
+    decouple_spatial: false
+    final_size: 180
+    label_path: /ADHD_Data/train_label.pkl
+    num_skip_frame: null
+    random_choose: true
+    random_noise: true
+    random_scale: true
+    window_size: 200
+  val_data_param:
+    augtimes: 1
+    center_choose: false
+    data_path: /ADHD_Data/test_data.npy
+    decouple_spatial: false
+    final_size: 180
+    label_path: /ADHD_Data/test_label.pkl
+    num_skip_frame: null
+    random_choose: true
+    random_noise: false
+    random_scale: false
+    window_size: 200
+debug: false
+device_id:
+- 0
+freeze_keys: []
+ignore_weights:
+- fc
+label_smoothing_num: 0
+last_model: null
+loss: cross_entropy
+lr: 0.1
+lr_decay_ratio: 0.1
+lr_multi_keys: []
+lr_param:
+  step:
+  - 60
+  - 80
+lr_scheduler: reduce_by_epoch
+max_epoch: 100
+mix_up_num: 0
+mode: train_val
+model: dstanet
+model_param:
+  CMRAttention: true
+  att_s: true
+  att_t: false
+  attentiondrop: 0
+  config:
+  - - 64
+    - 64
+    - 16
+    - 1
+  - - 64
+    - 64
+    - 16
+    - 1
+  - - 64
+    - 128
+    - 32
+    - 2
+  - - 128
+    - 128
+    - 32
+    - 1
+  dropout: 0
+  dropout2d: 0
+  glo_reg_s: false
+  glo_reg_t: false
+  num_channel: 6
+  num_frame: 180
+  num_person: 1
+  num_point: 24
+  num_subset: 6
+  use_pes: true
+  use_pet: true
+  use_spatial_att: true
+  use_temporal_att: false
+model_saved_name: ./work_dir/adhd/
+num_epoch_per_save: 200
+optimizer: sgd_nev
+pin_memory: false
+pre_trained_model: null
+train: classify
+warm_up_epoch: 5
+wd: 0.0005
+worker: 32
