@@ -83,7 +83,6 @@ def train_classifier(data_loader, model, loss_function, optimizer, global_step, 
                                                                                   process.iterable.last_duration,
                                                                                   lr))
 
-        # 每个batch记录一次
         if args.mode == 'train_val':
             writer.add_scalar('acc', acc, global_step)
             writer.add_scalar('loss', ls, global_step)
